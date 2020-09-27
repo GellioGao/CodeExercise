@@ -4,7 +4,7 @@ using Xunit;
 
 using ParseTheParcel.Models;
 
-namespace ParseTheParcel.Test
+namespace ParseTheParcel.Tests
 {
     /*
      *  Package Type    Length  Breadth Height  Cost

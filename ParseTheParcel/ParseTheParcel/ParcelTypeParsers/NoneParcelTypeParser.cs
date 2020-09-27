@@ -1,14 +1,13 @@
 ﻿using ParseTheParcel.Interfaces;
 using ParseTheParcel.Models;
-using ParseTheParcel.ParcelCalculators;
 
 namespace ParseTheParcel.ParcelTypeParsers
 {
     public class NoneParcelTypeParser : IParcelTypeParser
     {
-        public IParcelCalculator Parser(ParcelInfo info)
+        public Parcel Calculate(ParcelInfo info)
         {
-            return new NoneParcelCalculator();
+            return new Parcel();
         }
     }
 }

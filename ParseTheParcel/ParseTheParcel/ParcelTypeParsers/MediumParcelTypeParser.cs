@@ -1,6 +1,5 @@
 ﻿using ParseTheParcel.Interfaces;
 using ParseTheParcel.Models;
-using ParseTheParcel.ParcelCalculators;
 
 namespace ParseTheParcel.ParcelTypeParsers
 {
@@ -13,9 +12,9 @@ namespace ParseTheParcel.ParcelTypeParsers
 
         //Package Type    Length        Breadth     Height      Cost
         //Medium	        300mm	    400mm	    200mm	    $7.50
-        protected override IParcelCalculator GetFittingCalculator(ParcelInfo info)
+        protected override Parcel GetFittingParcel(ParcelInfo info)
         {
-            return new MediumParcelCalculator(info);
+            return new Parcel(PackageTypes.Medium, new ParcelCost(7.50m));
         }
 
         protected override bool IsOverSize(ParcelInfo info)

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParseTheParcel", "ParseTheParcel\ParseTheParcel.csproj", "{3ED72874-0678-4A96-871D-AD7EAC19B1BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParseTheParcel.Test", "ParseTheParcel.Test\ParseTheParcel.Test.csproj", "{FA0B70DC-AE26-4BA4-B0BB-98370E1ADE0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParseTheParcel.Tests", "ParseTheParcel.Tests\ParseTheParcel.Tests.csproj", "{FA0B70DC-AE26-4BA4-B0BB-98370E1ADE0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

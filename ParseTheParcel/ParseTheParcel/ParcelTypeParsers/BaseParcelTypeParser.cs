@@ -20,7 +20,7 @@ namespace ParseTheParcel.ParcelTypeParsers
             this.Next = next;
         }
 
-        public virtual IParcelCalculator Parser(ParcelInfo info)
+        public virtual Parcel Calculate(ParcelInfo info)
         {
             if (info == null)
             {
@@ -28,12 +28,12 @@ namespace ParseTheParcel.ParcelTypeParsers
             }
             if (this.IsParcelFitMe(info))
             {
-                return this.GetFittingCalculator(info);
+                return this.GetFittingParcel(info);
             }
-            return this.Next.Parser(info);
+            return this.Next.Calculate(info);
         }
 
-        protected abstract IParcelCalculator GetFittingCalculator(ParcelInfo info);
+        protected abstract Parcel GetFittingParcel(ParcelInfo info);
 
         protected virtual bool IsParcelFitMe(ParcelInfo info)
         {

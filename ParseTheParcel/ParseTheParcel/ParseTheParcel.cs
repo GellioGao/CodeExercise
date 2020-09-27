@@ -22,8 +22,7 @@ namespace ParseTheParcel
         {
             try
             {
-                var parcelCalculator = this.parser.Parser(info);
-                var parcel = parcelCalculator.GetParcel();
+                var parcel = this.parser.Calculate(info);
                 return parcel;
             }
             catch (ArgumentNullException ane)
