@@ -15,6 +15,6 @@ namespace ParseTheParcel
         public const string MESSAGE_OUTPUT_PARCEL_RESULT = "A {0} size parcel for your package, it coasts {1:C} NZD.";
         public const string MESSAGE_OUTPUT_PACKAGE_CANNOT_BE_ACCEPTED = "Your package cannot be accepted, because {0}";
         public const string MESSAGE_OUTPUT_USAGE_COMMAND = "Usage: dotnet run -p ./ParseTheParcel/ParseTheParcel.csproj <Length> <Breadth> <Height> <Weight>";
-        public const string MESSAGE_OUTPUT_USAGE_ARGUMENTS = "Arguments: <Length>:mm <Breadth>:mm <Height>:mm <Weight>:kg";
+        public const string MESSAGE_OUTPUT_USAGE_ARGUMENTS = "Arguments: <Length>:mm <Breadth>:mm <Height>:mm <Weight>:kg\r\n<Length>, <Breadth>, <Height> are an integer, <Weight> is a float";
     }
 }

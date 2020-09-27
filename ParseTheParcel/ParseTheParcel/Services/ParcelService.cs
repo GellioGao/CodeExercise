@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,6 +19,10 @@ namespace ParseTheParcel.Services
 
         public ParcelService(IParcelSpecificationGetable loader)
         {
+            if (loader == null)
+            {
+                throw new ArgumentNullException(nameof(loader));
+            }
             this.WeightLowerLimit = 1L;
             this.DeminsionLowerLimit = 0;
             this.loader = loader;
@@ -25,12 +30,20 @@ namespace ParseTheParcel.Services
 
         public IParcelResult Calculate(IPackageInfo packageInfo)
         {
+            if (packageInfo == null)
+            {
+                throw new ArgumentNullException(nameof(packageInfo));
+            }
             var specs = this.loader.Specifications;
-            var upperLimit = specs.Max(specs => specs.Weight);
+            long upperLimit = this.GetWeightUpperLimit(specs);
 
             this.CheckPackageWeight(packageInfo.Weight, upperLimit);
-            this.CheckPackageDeminsions(packageInfo);
-            
+            this.CheckPackageSize(packageInfo);
+            return this.GetParcel(packageInfo, specs);
+        }
+
+        private IParcelResult GetParcel(IPackageInfo packageInfo, IEnumerable<IParcelSpecification> specs)
+        {
             foreach (var spec in specs)
             {
                 if (IsFitTheSpecification(packageInfo, spec))
@@ -41,6 +54,11 @@ namespace ParseTheParcel.Services
             throw new UnexpectedPackageException(Constants.PACKAGE_TOO_BIG_MESSAGE);
         }
 
+        private long GetWeightUpperLimit(IEnumerable<IParcelSpecification> specs)
+        {
+            return specs.Max(specs => specs.Weight);
+        }
+
         private bool IsFitTheSpecification(IPackageInfo packageInfo, IParcelSpecification spec)
         {
             return packageInfo.Length <= spec.Length
@@ -49,7 +67,7 @@ namespace ParseTheParcel.Services
                 && packageInfo.Weight <= spec.Weight;
         }
 
-        private void CheckPackageDeminsions(IPackageInfo packageInfo)
+        private void CheckPackageSize(IPackageInfo packageInfo)
         {
             if (packageInfo.Length <= this.DeminsionLowerLimit
                 || packageInfo.Breadth <= this.DeminsionLowerLimit

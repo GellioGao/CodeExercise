@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,23 @@ namespace ParseTheParcel
 {
     public class ParcelSpecificationManager : IParcelSpecificationGetable, IParcelSpecificationSettable
     {
-        public IEnumerable<IParcelSpecification> Specifications { get; set; }
+
+        private IEnumerable<IParcelSpecification> specifications;
+        public IEnumerable<IParcelSpecification> Specifications
+        {
+            get
+            {
+                return this.specifications;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Specifications));
+                }
+                this.SetSortedSpecifications(value);
+            }
+        }
 
         public ParcelSpecificationManager()
         {
@@ -18,7 +35,12 @@ namespace ParseTheParcel
                 new ParcelSpecification("Medium", 7.50M, 300, 400, 200),
                 new ParcelSpecification("Large", 8.50M, 400, 600, 250),
             };
-            this.Specifications = specs
+            this.Specifications = specs;
+        }
+
+        private void SetSortedSpecifications(IEnumerable<IParcelSpecification> specs)
+        {
+            this.specifications = specs
                 .OrderBy(spec => spec.Cost)
                 .ToList();
         }
