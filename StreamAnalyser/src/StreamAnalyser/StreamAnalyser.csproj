@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Booster.CodingTest.Library">
+      <HintPath>..\..\libs\Booster.CodingTest.Library.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="NLipsum.Core">
+      <HintPath>..\..\libs\NLipsum.Core.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
